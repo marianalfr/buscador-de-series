@@ -60,7 +60,10 @@ function paintShows(allShows){
 
         elementLi.addEventListener('click', selectShow);
         elementLi.addEventListener('click', saveShow);
+        elementLi.addEventListener('click', showSelectedFavourites);
      }
+
+     showSelectedFavourites();
 }
 
 function paintError(){
@@ -90,44 +93,31 @@ function saveShow(event){
     const currentShowTitle = event.currentTarget.querySelector('.select-item');
     const currentShowImage = event.currentTarget.querySelector('.show-image');
 
-    const showObject = {
+    let showObject = {
         name: currentShowTitle.innerHTML,
         id: currentShowTitle.getAttribute('id'),
         image: currentShowImage.src,
     }
 
-    if(checkLocalStorage(showObject) === false){
-        favourites = JSON.parse(localStorage.getItem('favourites'));
+    if(event.currentTarget.classList.contains('selected')){
         favourites.push(showObject);
         localStorage.setItem('favourites', JSON.stringify(favourites));
-        console.log('false');
         paintFavourites(showObject);
-    } else if (checkLocalStorage(showObject) === true){
+
+    } else if (!event.currentTarget.classList.contains('selected')){
+        showObject = {};
         favourites = JSON.parse(localStorage.getItem('favourites'));
+        const favShowIndex = findArrayIndex(currentShowTitle.getAttribute('id'), favourites);
+        favourites.splice(favShowIndex, 1);
         localStorage.setItem('favourites', JSON.stringify(favourites));
-        console.log('true');
     } else {
         favourites = [];
         favourites.push(showObject);
         localStorage.setItem('favourites', JSON.stringify(favourites));
-        console.log('else');
+        
         paintFavourites(showObject);
     }
-}
-
-function checkLocalStorage(object){
-    favourites = JSON.parse(localStorage.getItem('favourites'));
-    if (favourites !==null){
-        const mySavedFavourites = JSON.parse(localStorage.getItem('favourites'));
-
-        for (let savedFavourite of mySavedFavourites){
-            if (savedFavourite.id === object.id){
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
+    updateCounter();
 }
 
 function paintFavourites(object){
@@ -135,15 +125,83 @@ function paintFavourites(object){
     favLiElement.classList.add('fav-list-element');
 
     const favSpanItem = document.createElement('span');
+    favSpanItem.setAttribute('id', object.id);
     const favTitleItem = document.createTextNode(object.name);
     const favImgItem = document.createElement('img');
+    // const favCloseItem = document.createElement('span');
+    // const favCloseIcon = document.createTextNode('✕');
+    const favCloseItem = document.createElement('span');
+    const favCloseIcon = document.createElement('i');
+    favCloseIcon.classList.add('close-icon', 'fas', 'fa-times-circle');
     favImgItem.src = object.image;
 
+    favCloseItem.appendChild(favCloseIcon);
     favSpanItem.appendChild(favTitleItem);
     favLiElement.appendChild(favSpanItem);
     favLiElement.appendChild(favImgItem);
+    favLiElement.appendChild(favCloseItem);
     favList.appendChild(favLiElement);
+
+    favCloseItem.addEventListener('click', removeFromFavList);
+}
+
+function findArrayIndex(idKey, myArray){
+    for (let i=0; i < myArray.length; i++) {
+        if (myArray[i].id === idKey) {
+            return myArray.indexOf(myArray[i]);
+        }
+    }
+}
+
+function removeFromFavList(event){
+    event.currentTarget.closest('li').classList.add('hidden');
+
+    favourites = JSON.parse(localStorage.getItem('favourites'));
+    const favShowID = event.currentTarget.closest('span').getAttribute('id');
+    const favIndex = findArrayIndex(favShowID, favourites);
+    favourites.splice(favIndex, 1);
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+    updateCounter();
+}
+
+function loadFavourites(){
+    if (localStorage.getItem('favourites') !==null){
+        favourites = JSON.parse(localStorage.getItem('favourites'));
+        for (let favourite of favourites){
+            paintFavourites(favourite);
+        }
+    } else {
+        favList.innerHTML='';
+    }
+}
+
+function showSelectedFavourites(){
+    if (localStorage.getItem('favourites') !==null){
+        const searchItems = document.querySelectorAll('.search-item');
+        favourites = JSON.parse(localStorage.getItem('favourites'));
+
+        for (let item of searchItems){
+            const itemTitle = item.querySelector('.select-item');
+
+            for (let favourite of favourites){
+                if(favourite.name == itemTitle.innerHTML){
+                    item.classList.add('selected');
+                }
+            }
+        }
+    }
 }
 
 buttonSearch.addEventListener('click', getShowsFromAPI);
 formSearch.addEventListener('submit', introSearch);
+window.addEventListener('load', loadFavourites);
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// Extras -->
+
+const favCounter = document.querySelector('#fav-counter')
+
+function updateCounter(){
+    favourites = JSON.parse(localStorage.getItem('favourites'));
+    favCounter.innerHTML = favourites.length;
+}
