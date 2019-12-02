@@ -56,6 +56,8 @@ function paintShows(allShows){
         elementLi.appendChild(elementShowTitle);
         elementLi.appendChild(elementShowImage);
         elementUl.appendChild(elementLi);
+
+        elementLi.addEventListener('click', selectShow);
      }
 }
 
@@ -76,6 +78,10 @@ function clearSearch(){
     if (showList.innerHTML !== ''){
         showList.innerHTML = '';
     }
+}
+
+function selectShow(event){
+    event.currentTarget.classList.toggle('selected')
 }
 
 buttonSearch.addEventListener('click', getShowsFromAPI);
