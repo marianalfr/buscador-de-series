@@ -21,6 +21,8 @@ function getShowsFromAPI(){
 
 function paintShows(allShows){
 
+    clearSearch();
+
     const defaultImage = 'https://via.placeholder.com/210x295/ffffff/666666/?%20text=TV';
 
     const elementUl = document.createElement('ul');
@@ -68,6 +70,12 @@ function paintError(){
 function introSearch(){
     event.preventDefault();
     getShowsFromAPI();
+}
+
+function clearSearch(){
+    if (showList.innerHTML !== ''){
+        showList.innerHTML = '';
+    }
 }
 
 buttonSearch.addEventListener('click', getShowsFromAPI);
