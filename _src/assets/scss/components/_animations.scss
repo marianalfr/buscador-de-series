@@ -1,0 +1,36 @@
+@keyframes face{
+    
+    to{
+        font-size: rem(25);
+        top: 20px;
+    }
+}
+
+@keyframes title{
+
+    to{
+        margin-top: 10px;
+        font-size: rem(40);
+        z-index: inherit;
+        top: 50px;
+    }
+}
+
+@keyframes input{
+    to{
+        height: 30px;
+        width: 200px;
+        border-radius: 15px;
+        margin-left: -12px;
+        padding: 0 10px;
+        top: 0px;
+    }
+
+}
+
+@keyframes button{
+    to{
+        top: 5px;
+        left: 90px;
+    }
+}

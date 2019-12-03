@@ -8,6 +8,64 @@
     top: 0px;
     background-color: $color-background;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    i{
+        font-size: rem(70);
+        margin-bottom: 0px;
+        position: absolute;
+        top: 100px;  
+
+        @include media($animation){
+            font-size: rem(100);
+            top: 100px;       
+        }
+    }
+
+    .icon-animated{
+        animation-name: face;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
+    &-title{
+        margin-top: 10px;
+        font-size: rem(50);
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: 170px;
+        z-index: 10;
+
+        @include media($animation){
+            font-size: rem(100);
+            top: 200px;       
+        }
+    }
+
+    .title-animated{
+        animation-name: title;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+}
+
+/*
+.header{
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    color: $color-1;
+    padding-top: 20px;
+    position: fixed;
+    top: 0px;
+    background-color: $color-background;
+    z-index: 1;
     
     i{
         font-size: rem(25);
@@ -19,3 +77,4 @@
         font-size: rem(40);
     }
 }
+*/
