@@ -1,0 +1,17 @@
+.header{
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    color: $color-1;
+    padding-top: 20px;
+    
+    i{
+        font-size: rem(25);
+        margin-bottom: 0px;
+    }
+
+    &-title{
+        margin-top: 10px;
+        font-size: rem(40);
+    }
+}

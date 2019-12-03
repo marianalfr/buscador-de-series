@@ -4,8 +4,8 @@ const inputSearch = document.querySelector('#input-search');
 const buttonSearch = document.querySelector('#btn-search');
 const showList = document.querySelector('#show-list');
 const formSearch = document.querySelector('#form-search');
-let favourites = [];
 const favList = document.querySelector('#fav-list');
+let favourites = [];
 
 function getShowsFromAPI(){
     const inputSearchValue = inputSearch.value;
@@ -165,7 +165,7 @@ function removeFromFavList(event){
 }
 
 function loadFavourites(){
-    if (localStorage.getItem('favourites') !==null){
+    if (localStorage.getItem('favourites') !==null || localStorage.getItem('favourites') !== ''){
         favourites = JSON.parse(localStorage.getItem('favourites'));
         for (let favourite of favourites){
             paintFavourites(favourite);
@@ -173,6 +173,8 @@ function loadFavourites(){
     } else {
         favList.innerHTML='';
     }
+
+    updateCounter();
 }
 
 function showSelectedFavourites(){
@@ -199,9 +201,19 @@ window.addEventListener('load', loadFavourites);
 ////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// Extras -->
 
-const favCounter = document.querySelector('#fav-counter')
+const favCounter = document.querySelector('#fav-counter');
+const favTop = document.querySelector('#fav-top');
+const favBottom = document.querySelector('#fav-bottom');
 
 function updateCounter(){
     favourites = JSON.parse(localStorage.getItem('favourites'));
     favCounter.innerHTML = favourites.length;
 }
+
+function toggleFavList(){
+    const favBottom = document.querySelector('#fav-bottom');
+    favBottom.classList.toggle('fav-bottom--open');
+    loadFavourites();
+}
+
+favTop.addEventListener('click', toggleFavList);
