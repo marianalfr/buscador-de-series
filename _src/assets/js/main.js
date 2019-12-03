@@ -84,6 +84,7 @@ function clearSearch(){
     if (showList.innerHTML !== ''){
         showList.innerHTML = '';
     }
+    closeFavList();
 }
 
 function selectShow(event){
@@ -169,7 +170,7 @@ function removeFromFavList(event){
 
 function loadFavourites(){
 
-    if (favList.innerHTML=''){
+    if (favList.innerHTML = ''){
         favList.innerHTML = '<p>Tu lista está vacía.</p>';
     } else {
         favList.innerHTML='';
@@ -234,10 +235,16 @@ function updateCounter(){
 }
 
 function toggleFavList(){
-    const favBottom = document.querySelector('#fav-bottom');
     favBottom.classList.toggle('fav-bottom--open');
-    favArrow.classList.toggle('fav-arrow-open')
+    favArrow.classList.toggle('fav-arrow-open');
     loadFavourites();
+}
+
+function closeFavList(){
+    if (favBottom.classList.contains('fav-bottom--open')){
+        favBottom.classList.remove('fav-bottom--open');
+        favArrow.classList.remove('fav-arrow-open');
+    }
 }
 
 favTop.addEventListener('click', toggleFavList);

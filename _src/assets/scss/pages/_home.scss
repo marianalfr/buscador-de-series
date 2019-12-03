@@ -28,6 +28,7 @@
     text-align: center;
     position: fixed;
     top: 120px;
+    z-index: 3;
 
     .label-search{
         font-size: rem(1);
@@ -78,9 +79,10 @@
     align-items: center;
     color: $color-1;
     font-weight: bold;
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
+    z-index: 2;
 
     .fav-counter{
         width: 20px;
@@ -116,6 +118,9 @@
     overflow:hidden;
     text-align: center;
     color: $color-1;
+    position: fixed;
+    background-color: $color-background;
+    z-index: 2;
 
     .fav-bottom-title{
         display: flex;
@@ -129,11 +134,11 @@
 
     .fav-list{
         width: 100%;
-        min-height: 300px;
+        min-height: 100vh;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         background-color: $color-1;
         color: $color-background;
 
@@ -165,6 +170,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
+    position: relative;
+    top: 170px;
 }
 
 .search-item{
@@ -176,9 +183,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding-top: 20px;
 
     .select-item{
-        margin: 30px 0 0 15px;
+        font-weight: 400;
     }
 }
 
