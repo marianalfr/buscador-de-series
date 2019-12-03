@@ -4,6 +4,9 @@
     text-align: center;
     color: $color-1;
     padding-top: 20px;
+    position: fixed;
+    top: 0px;
+    background-color: $color-background;
     
     i{
         font-size: rem(25);

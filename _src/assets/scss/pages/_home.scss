@@ -26,7 +26,8 @@
 .form-search{
     width: 100%;
     text-align: center;
-    margin-top: -25px;
+    position: fixed;
+    top: 120px;
 
     .label-search{
         font-size: rem(1);
@@ -107,6 +108,8 @@
 
 
 .fav-bottom{
+    margin-top: 130px;
+    padding-top: 50px;
     width: 100%;
     max-height: 0px;
     transition:max-height 0.5s; 
@@ -116,10 +119,13 @@
 
     .fav-list{
         width: 100%;
+        min-height: 300px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        background-color: $color-1;
+        color: $color-background;
 
         &-element{
             height: 300px;
@@ -149,7 +155,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
-    padding: 50px;
 }
 
 .search-item{

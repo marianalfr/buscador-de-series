@@ -165,13 +165,20 @@ function removeFromFavList(event){
 }
 
 function loadFavourites(){
-    if (localStorage.getItem('favourites') !==null || localStorage.getItem('favourites') !== ''){
-        favourites = JSON.parse(localStorage.getItem('favourites'));
-        for (let favourite of favourites){
-            paintFavourites(favourite);
-        }
+
+    if (favList.innerHTML=''){
+        favList.innerHTML = '<p>Tu lista está vacía.</p>';
     } else {
         favList.innerHTML='';
+
+        if (localStorage.getItem('favourites') !==null || localStorage.getItem('favourites') !== ''){
+            favourites = JSON.parse(localStorage.getItem('favourites'));
+            for (let favourite of favourites){
+                paintFavourites(favourite);
+            }
+        } else {
+            favList.innerHTML='';
+        }
     }
 
     updateCounter();
@@ -204,6 +211,7 @@ window.addEventListener('load', loadFavourites);
 const favCounter = document.querySelector('#fav-counter');
 const favTop = document.querySelector('#fav-top');
 const favBottom = document.querySelector('#fav-bottom');
+const favArrow = document.querySelector('#fav-arrow');
 
 function updateCounter(){
     favourites = JSON.parse(localStorage.getItem('favourites'));
@@ -213,7 +221,9 @@ function updateCounter(){
 function toggleFavList(){
     const favBottom = document.querySelector('#fav-bottom');
     favBottom.classList.toggle('fav-bottom--open');
+    favArrow.classList.toggle('fav-arrow-open')
     loadFavourites();
+    
 }
 
 favTop.addEventListener('click', toggleFavList);
