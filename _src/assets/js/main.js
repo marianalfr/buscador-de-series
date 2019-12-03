@@ -198,7 +198,7 @@ function showSelectedFavourites(){
             const itemTitle = item.querySelector('.select-item');
 
             for (let favourite of favourites){
-                if(favourite.name == itemTitle.innerHTML){
+                if(favourite.id == itemTitle.getAttribute('id')){
                     item.classList.add('selected');
                 }
             }
@@ -214,6 +214,7 @@ function resetFavList(){
     for (let selectedItem of selectedItems){
         selectedItem.classList.remove('.selected');
     }
+    closeFavList();
 }
 
 buttonSearch.addEventListener('click', getShowsFromAPI);
