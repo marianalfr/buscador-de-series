@@ -70,10 +70,10 @@ function paintShows(allShows){
 function paintError(){
 
     clearSearch();
-    
+
     const errorText = document.createElement('p');
     errorText.classList.add('error-message');
-    const errorMessage = document.createTextNode('Lo siento mucho, no conozco esta esta serie.');
+    const errorMessage = document.createTextNode('Lo siento mucho, no conozco esta serie.');
     errorText.appendChild(errorMessage);
     showList.appendChild(errorText);
 }
