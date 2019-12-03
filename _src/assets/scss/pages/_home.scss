@@ -35,15 +35,26 @@
     }
 
     .input-search{
-        height: 30px;
-        width: 200px;
-        padding: 0 10px;
-        border-radius: 15px;
+        height: 50px;
+        width: 250px;
+        padding: 0 20px;
+        border-radius: 50px;
         border: 2px solid $color-1;
         background-color: $color-background;
         color: $color-1;
-        margin-left: -25px;
         transition: background-color 1s ease;
+        position: absolute;
+        top: 130px;
+        transform: translate(-50%);
+        margin-left: -15px;
+
+        @include media($animation){
+            padding: 0 20px;
+            height: 50px;
+            width: 500px;
+            top: 230px; 
+            margin-left: -10px;
+        }
 
         &::placeholder{
             color: $color-1;
@@ -61,6 +72,13 @@
         }
     }
 
+    .input-animated{
+        animation-name: input;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
     .btn-search{
         border: none;
         background-color: $color-background;
@@ -70,6 +88,21 @@
         color: $color-1;
         margin-left: -35px;
         transition: background-color 1s ease;
+        position: relative;
+        top: 145px;
+        left:100px;
+
+        @include media($animation){
+            top: 245px;
+            left:235px;
+        }
+    }
+
+    .btn-animated{
+        animation-name: button;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
     }
 }
 
@@ -96,11 +129,22 @@
     }
 
     p{
-        margin: 0 5px;
+        display: none;
+
+        @include media($tablet){
+            display: inline-block;
+            margin: 0 5px;
+        }
     }
 
     .fav-arrow{
+
+        margin-left: 10px;
         transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), color 0.5s ease;
+        
+        @include media($tablet){
+            margin: 0px;
+        }
     }
 
     .fav-arrow-open{
@@ -110,8 +154,7 @@
 
 
 .fav-bottom{
-    margin-top: 130px;
-    padding-top: 50px;
+    margin-top: 150px;
     width: 100%;
     max-height: 0px;
     transition:max-height 0.5s; 
@@ -126,6 +169,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 30px;
 
         .btn-reset{
             margin-left: 30px;
@@ -170,6 +214,14 @@
     max-height: calc(100vh - 100px);
 }
 
+.show-list{
+    .error-message{
+        margin-top: 200px;
+        color: $color-1;
+        text-align: center;
+    }
+}
+
 .search-list{
     width: 100%;
     display: flex;
@@ -177,7 +229,7 @@
     justify-content: center;
     align-items: flex-end;
     position: relative;
-    top: 170px;
+    top: 200px;
 }
 
 .search-item{
@@ -196,3 +248,57 @@
     }
 }
 
+
+
+
+/* 
+.form-search{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 120px;
+    z-index: 3;
+
+    .label-search{
+        font-size: rem(1);
+    }
+
+    .input-search{
+        height: 30px;
+        width: 200px;
+        padding: 0 10px;
+        border-radius: 15px;
+        border: 2px solid $color-1;
+        background-color: $color-background;
+        color: $color-1;
+        margin-left: -25px;
+        transition: background-color 1s ease;
+
+        &::placeholder{
+            color: $color-1;
+        }
+
+        &:focus{
+            background-color: $color-1;
+            color: $color-background;
+            outline: none;
+        }
+
+        &:focus ~ .btn-search{
+            background-color: $color-1;
+            color: $color-background;
+        }
+    }
+
+    .btn-search{
+        border: none;
+        background-color: $color-background;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        color: $color-1;
+        margin-left: -35px;
+        transition: background-color 1s ease;
+    }
+}
+*/

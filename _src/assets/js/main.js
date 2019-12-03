@@ -68,6 +68,9 @@ function paintShows(allShows){
 }
 
 function paintError(){
+
+    clearSearch();
+    
     const errorText = document.createElement('p');
     errorText.classList.add('error-message');
     const errorMessage = document.createTextNode('Lo siento mucho, no conozco esta esta serie.');
@@ -77,7 +80,7 @@ function paintError(){
 
 function introSearch(){
     event.preventDefault();
-    getShowsFromAPI();
+    animateSearchBar();
 }
 
 function clearSearch(){
@@ -217,7 +220,7 @@ function resetFavList(){
     closeFavList();
 }
 
-buttonSearch.addEventListener('click', getShowsFromAPI);
+buttonSearch.addEventListener('click', animateSearchBar);
 formSearch.addEventListener('submit', introSearch);
 window.addEventListener('load', loadFavourites);
 resetFavs.addEventListener('click', resetFavList);
@@ -229,6 +232,8 @@ const favCounter = document.querySelector('#fav-counter');
 const favTop = document.querySelector('#fav-top');
 const favBottom = document.querySelector('#fav-bottom');
 const favArrow = document.querySelector('#fav-arrow');
+const headerTitle = document.querySelector('#header-title');
+const headerIcon = document.querySelector('#icon');
 
 function updateCounter(){
     favourites = JSON.parse(localStorage.getItem('favourites'));
@@ -246,6 +251,15 @@ function closeFavList(){
         favBottom.classList.remove('fav-bottom--open');
         favArrow.classList.remove('fav-arrow-open');
     }
+}
+
+function animateSearchBar(){
+    inputSearch.classList.add('input-animated');
+    buttonSearch.classList.add('btn-animated');
+    headerTitle.classList.add('title-animated');
+    headerIcon.classList.add('icon-animated');
+
+    setTimeout(getShowsFromAPI, 500);
 }
 
 favTop.addEventListener('click', toggleFavList);
