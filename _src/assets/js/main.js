@@ -6,7 +6,9 @@ const showList = document.querySelector('#show-list');
 const formSearch = document.querySelector('#form-search');
 const favList = document.querySelector('#fav-list');
 const resetFavs = document.querySelector('#btn-reset');
+const resultNumberP = document.querySelector('#result-number');
 let favourites = [];
+let results;
 
 function getShowsFromAPI(){
     const inputSearchValue = inputSearch.value;
@@ -31,6 +33,10 @@ function paintShows(allShows){
     elementUl.classList.add('search-list');
     showList.appendChild(elementUl);
 
+    const resultNumber = allShows.length;
+
+    resultNumberP.innerHTML = resultNumber;
+
     for (let show of allShows){
         const showData = show.show;
         const elementLi = document.createElement('li');
@@ -38,6 +44,7 @@ function paintShows(allShows){
 
         const showID = showData.id;
         const showName = showData.name;
+        const showPremier = showData.premiered;
 
         const elementShowTitle = document.createElement('h2');
         elementShowTitle.setAttribute('id', showID);
@@ -45,6 +52,10 @@ function paintShows(allShows){
         const elementShowImage = document.createElement('img');
         elementShowImage.classList.add('show-image');
         const showTitle = document.createTextNode (showName);
+        const premiered = document.createElement('p');
+        const premieredInfo = document.createTextNode(showPremier);
+        premiered.appendChild(premieredInfo);
+        elementLi.appendChild(premiered);
         
 
         elementShowTitle.appendChild(showTitle);
