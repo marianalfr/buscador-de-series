@@ -172,23 +172,24 @@ function removeFromFavList(event){
 
     if(favourites.length < 1){
         closeFavList();
+        loadFavourites();
     }
 }
 
 function loadFavourites(){
 
-    if (favList.innerHTML = ''){
+    if (favList.innerHTML === '' || favList.innerHTML === '<p>Tu lista está vacía.</p>'){
         favList.innerHTML = '<p>Tu lista está vacía.</p>';
     } else {
-        favList.innerHTML='';
+        favourites = JSON.parse(localStorage.getItem('favourites'));
 
-        if (localStorage.getItem('favourites') !== null || localStorage.getItem('favourites') !== ''){
-            favourites = JSON.parse(localStorage.getItem('favourites'));
+        if (favourites !== null || favourites.length !== 0){
+            favList.innerHTML='';
             for (let favourite of favourites){
                 paintFavourites(favourite);
             }
         } else {
-            favList.innerHTML='';
+            favList.innerHTML='<p>Tu lista está vacía.</p>';
         }
     }
 
@@ -242,7 +243,6 @@ function removeSelected(){
 
 buttonSearch.addEventListener('click', animateSearchBar);
 formSearch.addEventListener('submit', introSearch);
-window.addEventListener('load', loadFavourites);
 resetFavs.addEventListener('click', resetFavList);
 
 ////////////////////////////////////////////////////////////////////////
@@ -262,12 +262,8 @@ function updateCounter(){
 
 function toggleFavList(){
     favourites = JSON.parse(localStorage.getItem('favourites'));
-    if (favourites !== null){
     favBottom.classList.toggle('fav-bottom--open');
     favArrow.classList.toggle('fav-arrow-open');
-    } else {
-        alert('¡Todavía no tienes series guardadas en favoritas! Busca y añade seleccionándolas.')
-    }
     loadFavourites();
     removeSelected();
 }
