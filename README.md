@@ -1,7 +1,18 @@
 
-# Starter Kit
-Esta es una modificación del [Starter Kit de Adalab](https://github.com/Adalab/Adalab-web-starter-kit) en node/gulp para utilizarlo como base de nuestros ejercicios y proyectos.
-Incluye SCSS, un sistema de plantillas HTMl y un web server.
+# Buscador de Series
+![BS-Home](BS-home.png)
+Esta es mi propuesta para la solución a un ejercicio de evaluación en [Adalab](https://github.com/Adalab). Se trata de un buscador de series con una lista de series favoritas, que se guardan en el *local storage* del usuario. Está llevado a cabo con parciales de html, sass y javascript, usando gulp como compilador y automatizador de tareas.
+
+
+![BS-Home](BS-fav.png)
+![BS-Home](BS-favs.png)
+
+-------
+
+Como base para el proyecto he utilizado mi *starter kit* personalizado:
+
+--------
+
 
 ## Cambios con respecto al Kit de Adalab
 - Meta para viewport añadida a `index.html`, **para que funcionen las media queries**.
