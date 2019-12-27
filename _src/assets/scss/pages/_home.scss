@@ -1,4 +1,4 @@
-.selected{
+ul.search-list li.selected{
     background-color: $color-1;
     display: flex;
     flex-direction: column;
@@ -116,6 +116,7 @@
     top: 20px;
     left: 20px;
     z-index: 2;
+    cursor: pointer;
 
     .fav-counter{
         width: 20px;
@@ -163,7 +164,7 @@
     color: $color-1;
     position: fixed;
     background-color: $color-background;
-    z-index: 2;
+    z-index: 20;
 
     .fav-bottom-title{
         display: flex;
@@ -191,7 +192,7 @@
             flex-flow: row wrap;
 
             &-element{
-                height: 220px;
+                height: 250px;
                 width: 100px;
                 padding: 10px;
                 background-color: $color-1;
@@ -224,6 +225,7 @@
 
 .search-list{
     width: 100%;
+    padding-bottom: 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -234,12 +236,12 @@
 
 .search-item{
     width: 210px;
-    height: 360px;
+    height: 400px;
     color: $color-1;
     font-size: rem(12);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding-top: 20px;
 
@@ -247,58 +249,3 @@
         font-weight: 400;
     }
 }
-
-
-
-
-/* 
-.form-search{
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    top: 120px;
-    z-index: 3;
-
-    .label-search{
-        font-size: rem(1);
-    }
-
-    .input-search{
-        height: 30px;
-        width: 200px;
-        padding: 0 10px;
-        border-radius: 15px;
-        border: 2px solid $color-1;
-        background-color: $color-background;
-        color: $color-1;
-        margin-left: -25px;
-        transition: background-color 1s ease;
-
-        &::placeholder{
-            color: $color-1;
-        }
-
-        &:focus{
-            background-color: $color-1;
-            color: $color-background;
-            outline: none;
-        }
-
-        &:focus ~ .btn-search{
-            background-color: $color-1;
-            color: $color-background;
-        }
-    }
-
-    .btn-search{
-        border: none;
-        background-color: $color-background;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        color: $color-1;
-        margin-left: -35px;
-        transition: background-color 1s ease;
-    }
-}
-*/

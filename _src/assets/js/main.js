@@ -25,7 +25,7 @@ function paintShows(allShows){
 
     clearSearch();
 
-    const defaultImage = 'https://via.placeholder.com/210x295/ffffff/666666/?%20text=TV';
+    const defaultImage = './assets/images/image-unavailable.png';
 
     const elementUl = document.createElement('ul');
     elementUl.classList.add('search-list');
@@ -169,6 +169,10 @@ function removeFromFavList(event){
     favourites.splice(favIndex, 1);
     localStorage.setItem('favourites', JSON.stringify(favourites));
     updateCounter();
+
+    if(favourites.length < 1){
+        closeFavList();
+    }
 }
 
 function loadFavourites(){
@@ -187,7 +191,6 @@ function loadFavourites(){
             favList.innerHTML='';
         }
     }
-
 
     updateCounter();
 }
@@ -220,6 +223,23 @@ function resetFavList(){
     closeFavList();
 }
 
+function removeSelected(){
+    favourites = JSON.parse(localStorage.getItem('favourites'));
+    const selectedItems = document.querySelectorAll('.selected');
+
+    if(favourites !== null){
+        for (let selectedItem of selectedItems){
+            const itemId = selectedItem.querySelector('.select-item').getAttribute('id');
+            if(favourites === null || !favourites.includes(itemId)){
+                selectedItem.classList.remove('selected');
+            }
+        }
+    } else {
+        return favourites=[];
+    }
+
+}
+
 buttonSearch.addEventListener('click', animateSearchBar);
 formSearch.addEventListener('submit', introSearch);
 window.addEventListener('load', loadFavourites);
@@ -241,9 +261,15 @@ function updateCounter(){
 }
 
 function toggleFavList(){
+    favourites = JSON.parse(localStorage.getItem('favourites'));
+    if (favourites !== null){
     favBottom.classList.toggle('fav-bottom--open');
     favArrow.classList.toggle('fav-arrow-open');
+    } else {
+        alert('¡Todavía no tienes series guardadas en favoritas! Busca y añade seleccionándolas.')
+    }
     loadFavourites();
+    removeSelected();
 }
 
 function closeFavList(){
@@ -251,6 +277,8 @@ function closeFavList(){
         favBottom.classList.remove('fav-bottom--open');
         favArrow.classList.remove('fav-arrow-open');
     }
+
+    removeSelected();
 }
 
 function animateSearchBar(){
