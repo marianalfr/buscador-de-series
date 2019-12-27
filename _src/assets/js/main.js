@@ -10,7 +10,7 @@ let favourites = [];
 
 function getShowsFromAPI(){
     const inputSearchValue = inputSearch.value;
-    fetch (`http://api.tvmaze.com/search/shows?q=${inputSearchValue}`)
+    fetch (`https://api.tvmaze.com/search/shows?q=${inputSearchValue}`)
     .then(response => response.json())
     .then(data => {
         if(data.length !== 0){
