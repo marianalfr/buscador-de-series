@@ -1,6 +1,7 @@
 
 # Buscador de Series.
-###*Show Search*
+### *Show Search*.
+
 ![BS-Home](BS-home.png)
 
 This is the proposal I developed for one of the tests we had at [Adalab](https://adalab.es/). We had to make a simple app to search tv shows so the user could also select their favourites and add them to a list. The user's favourite shows had to be locally stored so they would remain in the list on future visits to the site.
