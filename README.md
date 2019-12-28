@@ -1,15 +1,70 @@
 
-# Buscador de Series
+# Buscador de Series.
+###*Show Search*
 ![BS-Home](BS-home.png)
-Esta es mi propuesta para la solución a un ejercicio de evaluación en [Adalab](https://github.com/Adalab). Se trata de un buscador de series con una lista de series favoritas, que se guardan en el *local storage* del usuario. Está llevado a cabo con parciales de html, sass y javascript, usando gulp como compilador y automatizador de tareas.
 
+This is the proposal I developed for one of the tests we had at [Adalab](https://adalab.es/). We had to make a simple app to search tv shows so the user could also select their favourites and add them to a list. The user's favourite shows had to be locally stored so they would remain in the list on future visits to the site.
+I used html, sass and javascript partials compiled with node/gulp.
 
 ![BS-Home](BS-fav.png)
 ![BS-Home](BS-favs.png)
 
+### Getting started
+
+If you want to play around with my project, please visit [my Github repository](https://github.com/marianalfr/buscador-de-series) to clone or download it.
+* To clone it: copy this [link](https://github.com/marianalfr/buscador-de-series.git) and go to your terminal. Once in the terminal, navigate to the directory where you want to install it and use the command:
+
+```$ git clone https://github.com/marianalfr/buscador-de-series.git```
+
+* To download it: you can download the zip version using the clone or download tab on the repository and unzip it in your local directory.
+
+
+### Installing
+
+* On your terminal, make sure you are in your *buscador-de-series* folder and run the commands:
+
+`$ npm install`
+
+`$ npm start` or `$ gulp`
+
+* Gulp will create the `public`folder and will run a local server where any changes will immediately show.
+* You can also create a `docs`folder by running `gulp docs`on your terminal.
+
+
+### Technologies
+
+* HTML 5.
+* CSS - SCSS.
+* Javascript.
+* Gulp
+
+
+### MIT License.
+
+Copyright (c) 2019 Skylabers
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
 -------
 
-Como base para el proyecto he utilizado mi *starter kit* personalizado:
+As a base for my project I used my customised *starter kit*:
 
 --------
 
