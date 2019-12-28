@@ -14,7 +14,7 @@ I used html, sass and javascript partials compiled with node/gulp.
 ### Getting started
 
 If you want to play around with my project, please visit [my Github repository](https://github.com/marianalfr/buscador-de-series) to clone or download it.
-* To clone it: copy this [link](https://github.com/marianalfr/buscador-de-series.git) and go to your terminal. Once in the terminal, navigate to the directory where you want to install it and use the command:
+* To clone it: copy this [link](https://github.com/marianalfr/buscador-de-series.git) and go to your terminal. Once on the terminal, navigate to the directory where you want to install it and use the command:
 
 ```$ git clone https://github.com/marianalfr/buscador-de-series.git```
 
